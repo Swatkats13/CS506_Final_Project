@@ -2,7 +2,7 @@
 
 ## Description
 
-This project aims to predict the presence of cancer based on gene expression data from the Gene Expression Omnibus (GEO) database. RNA sequencing data from cancer and non-cancer samples will be analyzed to identify differences in expression profiles. By focusing on a subset of key genes related to cancer development, the project will explore how gene expression patterns differ between cancerous and normal tissues, and whether these patterns can be used to predict the likelihood of cancer.
+This project aims to predict the presence of cancer based on gene expression data from the [Gene Expression Omnibus (GEO)](https://www.kaggle.com/datasets/samiraalipour/gene-expression-omnibus-geo-dataset-gse68086) database. RNA sequencing data from cancer and non-cancer samples will be analyzed to identify differences in expression profiles. By focusing on a subset of key genes related to cancer development, the project will explore how gene expression patterns differ between cancerous and normal tissues, and whether these patterns can be used to predict the likelihood of cancer.
 
 ## Background
 
