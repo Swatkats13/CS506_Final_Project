@@ -24,6 +24,15 @@ Steps to collect data -
 2. Filter the data to focus on a few key genes (approximately 10-20 genes) related to cancer biology.
 3. Preprocess the data to remove noise and normalize gene expression values for further analysis.
 
+## Data Processing
+
+The dataset has two files, GSE68086_series_matrix contains the information of the patient/sample source, including the tissue they got the RNA and the type of cancer. TEP_data_matrix includes the intron-spanning RNA-seq read counts.
+Steps to process data -
+1. Identify unuseful data in the series matrix, for example, the species column is all the same, because they all come from human body
+2. One-hot encode cancer type (Note: Cancer_Type_HC means Healthy Control)
+3. Convert TEP data matrix to long, make it easier to work with
+4. Map and merge TEP data with their corresponding cancer type
+
 ## Modeling Approach
 
 To model the data, several machine learning methods will be explored -
