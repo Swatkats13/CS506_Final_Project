@@ -2,7 +2,7 @@
 
 
 ## Midterm Presentation
-[Presentation]([readme.com](https://youtu.be/jrz6pE5KLZA))
+[Presentation](https://youtu.be/jrz6pE5KLZA)
 
 ## Midterm Report 
 ### Please find reporting under sections with - Midterm Updates 
