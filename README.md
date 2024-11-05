@@ -31,7 +31,7 @@ Data will be sourced from the publicly available Gene Expression Omnibus (GEO) r
 * Filter the data to focus on a few key genes (approximately 10-20 genes) related to cancer biology.
 * Preprocess the data to remove noise and normalize gene expression values for further analysis.
 
-## Data - Midterm Update
+## Data - Midterm Update (11/5)
 
 Our selected dataset, sourced from the Gene Expression Omnibus (GEO) and hosted on Kaggle, contains RNA sequencing data from Tumor-Educated Platelets (TEPs). TEPs are known to reflect tumor presence in the body, as their RNA profiles change in response to signals released by tumors into the bloodstream. Leveraging TEPs for cancer diagnostics and treatment is an emerging area of research, making this dataset highly relevant for modeling applications.
 
