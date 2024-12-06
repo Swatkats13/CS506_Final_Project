@@ -1,5 +1,11 @@
 # CS506_Final_Project
-
+## Run the code
+Download the raw dataset from Kaggle to ```data``` folder<br>
+[Gene Expression Omnibus (GEO) Dataset: GSE68086](https://www.kaggle.com/datasets/samiraalipour/gene-expression-omnibus-geo-dataset-gse68086)<br><br>
+Pre-processed dataset is also available from our Google Drive, you can skip the data processing if you download the clean data [https://drive.google.com/drive/folders/1azEtUWEL36PpT4c7fenRnjUFl9yMfc7q?usp=sharing](https://drive.google.com/drive/folders/1azEtUWEL36PpT4c7fenRnjUFl9yMfc7q?usp=sharing)<br><br><br>
+```make install``` to install all dependencies<br>
+```make data``` to process data<br>
+```make run``` to go through model-building steps and make the prediction<br>
 
 ## Midterm Presentation
 [Presentation](https://youtu.be/jrz6pE5KLZA)
