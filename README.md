@@ -8,6 +8,7 @@ Pre-processed dataset is also available from our Google Drive, you can skip the 
 ```make data``` to process data<br>
 ```make run``` to go through model-building steps and make the prediction<br>
 
+---
 ## Midterm Presentation
 [Presentation](https://youtu.be/jrz6pE5KLZA)
 
