@@ -1,16 +1,18 @@
 import pandas as pd
 import numpy as np
 from sklearn.linear_model import LinearRegression, LogisticRegression
+from sklearn.ensemble import RandomForestClassifier
 from sklearn.preprocessing import StandardScaler
-from sklearn.metrics import mean_squared_error, r2_score, accuracy_score, confusion_matrix, ConfusionMatrixDisplay, f1_score
+from sklearn.metrics import mean_squared_error, r2_score, accuracy_score, confusion_matrix, ConfusionMatrixDisplay, f1_score, classification_report
 import matplotlib.pyplot as plt
 from PIL import Image
+import xgboost as xgb
 
 def main():
     # Load the training and test datasets
     print('Loading the training and test datasets...')
-    train_data = pd.read_csv('test/cleaned_data_train.csv')
-    test_data = pd.read_csv('test/cleaned_data_test.csv')
+    train_data = pd.read_csv('data/cleaned_data_train.csv')
+    test_data = pd.read_csv('data/cleaned_data_test.csv')
     print('Processing the data...')
     # Convert 'Cancer' column to numeric
     train_data['Cancer'] = train_data['Cancer'].astype(int)
@@ -25,8 +27,8 @@ def main():
 
     # Standardize the features (important for Logistic Regression)
     scaler = StandardScaler()
-    X_train_scaled = X_train.copy()
-    X_test_scaled = X_test.copy()
+    X_train_scaled = scaler.fit_transform(X_train)
+    X_test_scaled = scaler.transform(X_test)
 
     # Linear Regression
     print("### Linear Regression ###")
@@ -99,16 +101,74 @@ def main():
     # plt.text(0, 1, f'F1 Score: {f1}', color='black', fontsize=12, fontweight='bold', ha='bottom')
     # Save the plot
     plt.savefig('confusion_matrix_logistic_regression.png')
+    
+    
+    # XGBoost Model
+    print("\n### XGBoost Model ###")
+    xgb_model = xgb.XGBClassifier(use_label_encoder=False, eval_metric='logloss', random_state=42)
+    xgb_model.fit(X_train_scaled, y_train)
+    
+    # Predictions
+    y_pred_xgb = xgb_model.predict(X_test_scaled)
+    y_pred_prob_xgb = xgb_model.predict_proba(X_test_scaled)[:, 1]  # Probability of positive class
+    
+    # Evaluate XGBoost
+    accuracy = accuracy_score(y_test, y_pred_xgb)
+    f1 = f1_score(y_test, y_pred_xgb)
+    print(f"Accuracy: {accuracy}")
+    print(f"F1 Score: {f1}")
+
+    # Classification Report
+    print("\nClassification Report:")
+    print(classification_report(y_test, y_pred_xgb))
+    
+    # Save the confusion matrix plot for XGBoost
+    cm = confusion_matrix(y_test, y_pred_xgb)
+    disp = ConfusionMatrixDisplay(confusion_matrix=cm, display_labels=[False, True])
+    disp.plot(cmap=plt.cm.Blues)
+    plt.title('Confusion Matrix for XGBoost')
+    plt.savefig('confusion_matrix_xgboost.png')
+    
+    # Random Forest Model
+    print("\n### Random Forest Model ###")
+    rf_model = RandomForestClassifier(n_estimators=100, random_state=42)
+    rf_model.fit(X_train_scaled, y_train)
+    
+    # Predictions
+    y_pred_rf = rf_model.predict(X_test_scaled)
+    y_pred_prob_rf = rf_model.predict_proba(X_test_scaled)[:, 1]  # Probability of positive class
+    
+    # Evaluate Random Forest
+    accuracy = accuracy_score(y_test, y_pred_rf)
+    f1 = f1_score(y_test, y_pred_rf)
+    print(f"Accuracy: {accuracy}")
+    print(f"F1 Score: {f1}")
+
+    # Classification Report
+    print("\nClassification Report:")
+    print(classification_report(y_test, y_pred_rf))
+    
+    # Save the confusion matrix plot for Random Forest
+    cm = confusion_matrix(y_test, y_pred_rf)
+    disp = ConfusionMatrixDisplay(confusion_matrix=cm, display_labels=[False, True])
+    disp.plot(cmap=plt.cm.Blues)
+    plt.title('Confusion Matrix for Random Forest')
+    plt.savefig('confusion_matrix_random_forest.png')
 
     # Show both confusion_matrix_linear_regression.png and confusion_matrix_logistic_regression.png
     # Combine the two images
     img1 = Image.open('confusion_matrix_linear_regression.png')
     img2 = Image.open('confusion_matrix_logistic_regression.png')
+    img3 = Image.open('confusion_matrix_xgboost.png')
+    img4 = Image.open('confusion_matrix_random_forest.png')
+    
     # Create a new image with twice the width of the two images
-    new_img = Image.new('RGB', (img1.width + img2.width, img1.height))
+    new_img = Image.new('RGB', (img1.width + img2.width, img1.height + img3.height))
     # Paste the two images side by side
     new_img.paste(img1, (0, 0))
     new_img.paste(img2, (img1.width, 0))
+    new_img.paste(img3, (0, img1.height))
+    new_img.paste(img4, (img3.width, img1.height))
     # Display the combined image
     new_img.show()
     
