@@ -82,7 +82,7 @@ To model the data, we explored several machine learning methods -
 ## Testing and Performance Metrics 
 Testing involved splitting the data into training and testing sets -
 
-80-20 split - 80% of the dataset will be used for training the model, and the remaining 20% will be withheld for testing the model’s performance.
+80-20 split - 80% of the dataset will be used for training the model, and the remaining 20% will be withheld for testing the model’s performance. Using this split gave us 226 samples in our train set and 57 samples in our test set. 
 
 Performance Metrics - Models were primarily evaluated based on the F1-score due to the imbalanced nature of the dataset, with far fewer healthy samples compared to cancerous ones. The F1-score is well-suited for this scenario because it provides a harmonic mean of precision and recall, ensuring that both false positives and false negatives are considered equally. This is crucial in cancer classification, where a model's ability to correctly identify cancer cases (high recall) must be balanced with minimizing the misclassification of healthy individuals as having cancer (high precision).
 
