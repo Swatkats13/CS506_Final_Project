@@ -35,7 +35,7 @@ The initial step in data cleaning was to remove redundant information that would
 
 After the midterm checkpoint, our team revisited the data to address the poor performance of the models we had trained. We hypothesized that the issue might stem from data processing steps and also decided to simplify the problem statement to focus solely on predicting the presence or absence of cancer, streamlining our work into a binary classification task.
 
-To accommodate this change in scope, we reformatted our RNA expression data into a long format, where each sample had its own set of gene expression values represented by Sample, gene_ID, and gene expression level (FPKM) columns. We normalized the FPKMs using the formula (FPKM−mean)/variance+1e−10(\text{FPKM} - \text{mean}) / \sqrt{\text{variance} + 1e-10}(FPKM−mean)/variance+1e−10​, ensuring avoidance of division by zero or negative variance.
+To accommodate this change in scope, we reformatted our RNA expression data into a long format, where each sample had its own set of gene expression values represented by Sample, gene_ID, and gene expression level (FPKM) columns. We normalized the FPKMs using the formula $\frac{\text{FPKM} - \text{mean}}{\sqrt{\text{variance} + 1e^{-10}}}$​, ensuring avoidance of division by zero or negative variance.
 
 The original dataset we used before the midterm report was in a wide format, where samples were represented as columns, rows corresponded to gene expression levels for specific genes, and cancer type labels were one-hot encoded. While this wide format proved less suitable for modeling, we retained it for better data visualization. Overall, for modeling, we converted the data to long format, allowing for seamless integration of patient information, normalized gene expression values, and binary cancer labels.
 
@@ -178,10 +178,14 @@ Future research should focus on experimental validation of the novel genes ident
 
 # Works Cited
 aTomic Lab. HECW2 AS1 | ENSG00000229056 | NCBI 101927482 - Gene Details. https://genular.atomic-lab.org. Accessed 9 Dec. 2024.
+B2M Protein Expression Summary - The Human Protein Atlas. https://www.proteinatlas.org/ENSG00000166710-B2M. Accessed 3 Nov. 2024. 
+PPBP Protein Expression Summary - The Human Protein Atlas. https://www.proteinatlas.org/ENSG00000163736-PPBP. Accessed 3 Nov. 2024.
 CARD16 Protein Expression Summary - The Human Protein Atlas. https://www.proteinatlas.org/ENSG00000204397-CARD16. Accessed 9 Dec. 2024.
 Gene: HECW2-AS1 (ENSG00000229056) - Summary - Homo_sapiens - Ensembl Genome Browser 113. https://useast.ensembl.org/Homo_sapiens/Gene/Summary?g=ENSG00000229056;r=2:196260006-196264204;t=ENST00000430904. Accessed 9 Dec. 2024.
+Gene Expression Omnibus (GEO) Dataset: GSE68086. https://www.kaggle.com/datasets/samiraalipour/gene-expression-omnibus-geo-dataset-gse68086. Accessed 3 Nov. 2024.
 HOOK3 Protein Expression Summary - The Human Protein Atlas. https://www.proteinatlas.org/ENSG00000168172-HOOK3. Accessed 9 Dec. 2024.
 Mattick, John S., et al. “Long Non-Coding RNAs: Definitions, Functions, Challenges and Recommendations.” Nature Reviews Molecular Cell Biology, vol. 24, no. 6, June 2023, pp. 430–47, https://doi.org/10.1038/s41580-022-00566-8.
+NAP1L1 Protein Expression Summary - The Human Protein Atlas. https://www.proteinatlas.org/ENSG00000187109-NAP1L1. Accessed 3 Nov. 2024.
 PFDN4 Protein Expression Summary - The Human Protein Atlas. https://www.proteinatlas.org/ENSG00000101132-PFDN4. Accessed 9 Dec. 2024.
 TCEAL9 Protein Expression Summary - The Human Protein Atlas. https://www.proteinatlas.org/ENSG00000185222-TCEAL9. Accessed 9 Dec. 2024.
 TTN Protein Expression Summary - The Human Protein Atlas. https://www.proteinatlas.org/ENSG00000155657-TTN. Accessed 9 Dec. 2024.
