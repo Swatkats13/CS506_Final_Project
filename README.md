@@ -149,7 +149,7 @@ From our model-building efforts, we identified logistic regression and XGBoost a
 
 In the logistic regression model, three genes—ENSG00000229056, ENSG00000204397, and ENSG00000185222—were most strongly associated with an increased likelihood of cancer when highly expressed (Figure 20).
 
-1. ENSG00000229056: This gene encodes a long non-coding RNA (lncRNA), a class of genes crucial for regulating gene expression and potentially impacting protein degradation (Gene: HECW2-AS1; Mattick et al.). Notably, there is little evidence linking this gene to cancer in previous studies (aTomic Lab). This highlights the potential novelty of our model’s findings and suggests it may have identified a new target for precision medicine.
+1. ENSG00000229056: This gene encodes a long non-coding RNA (lncRNA), a class of genes crucial for regulating gene expression and potentially impacting protein degradation (Gene: HECW2-AS1; Mattick et al.). Notably, there is little evidence linking this gene to cancer in previous studies - especially in comparison to the other genes seen in the top 20 (aTomic Lab). This highlights the potential novelty of our model’s findings and suggests it may have identified a new target for precision medicine.
 
 2. ENSG00000204397: This gene encodes a protein that regulates caspase-1, which in turn activates interleukin-1 beta (IL-1β)—a signaling molecule involved in the body's inflammatory response to infections or injuries (Weizmann Institute of Science). Elevated expression of this gene has been observed in cancers, providing strong validation for our model’s ability to identify biologically relevant targets (CARD16 Protein Expression).
 
