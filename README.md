@@ -43,7 +43,7 @@ To accommodate this change in scope, we reformatted our RNA expression data into
 The original dataset we used before the midterm report was in a wide format, where samples were represented as columns, rows corresponded to gene expression levels for specific genes, and cancer type labels were one-hot encoded. While this wide format proved less suitable for modeling, we retained it for better data visualization. Overall, for modeling, we converted the data to long format, allowing for seamless integration of patient information, normalized gene expression values, and binary cancer labels.
 
 ## Data Visualization
-To better understand the dataset, a series of visualizations were created to highlight gene expression patterns and their potential implications for cancer diagnostics.
+To better understand the dataset, a series of visualizations were created to highlight gene expression patterns and their potential implications for cancer diagnostics. 
 
 In Figure 3, we observe that the differential expression of genes between breast cancer and normal samples varies significantly. Some genes, such as 166170, show substantial expression differences, suggesting their potential as strong predictors. This gene also appears to be differentially expressed across all cancer samples (Figure 4), indicating its association with cancer in general. According to The Human Protein Atlas, 166170 has low cancer specificity, making it useful for distinguishing between cancerous and non-cancerous samples, though less effective for identifying specific cancer types (_B2M_).
 
@@ -71,6 +71,8 @@ Following this, Figure 8 provides insight into how FPKM values vary within each 
 ![Figure 8](Screenshots/Figure_8.png) <br />
 Figure 8. Facet Grid of FPKM Distribution of Top 20 Differentially Expressed Genes
 
+Note: If you would like to review our code for data visualization, please refer to ```data_processing.ipynb```
+
 ## Modeling Approach
 To model the data, we explored several machine learning methods -
 
@@ -85,7 +87,7 @@ To model the data, we explored several machine learning methods -
 ## Testing and Performance Metrics 
 Testing involved splitting the data into training and testing sets -
 
-80-20 split - 80% of the dataset will be used for training the model, and the remaining 20% will be withheld for testing the model’s performance. Using this split gave us 226 samples in our train set and 57 samples in our test set. 
+80-20 split - 80% of the dataset was used for training the model, and the remaining 20% was withheld for testing the model’s performance. Using this split gave us 226 samples in our train set and 57 samples in our test set. 
 
 Performance Metrics - Models were primarily evaluated based on the F1-score due to the imbalanced nature of the dataset, with far fewer healthy samples compared to cancerous ones. The F1-score is well-suited for this scenario because it provides a harmonic mean of precision and recall, ensuring that both false positives and false negatives are considered equally. This is crucial in cancer classification, where a model's ability to correctly identify cancer cases (high recall) must be balanced with minimizing the misclassification of healthy individuals as having cancer (high precision).
 
@@ -137,6 +139,8 @@ Figure 16. XGBoost Performance Metrics
 Finally, we trained a neural network to see if there were even more complex patterns in the gene expression data that could be found. We knew that this would not likely be the most favorable model even if it was the best predictor because it lacks the interpretability that is so valuable to clinical professionals. However, we found it to still be worthwhile to try. 
 
 Our neural network consisted of an input layer, a ReLU-activated hidden layer with L2 regularization, and a sigmoid-activated output layer to produce class probabilities. To find the best-performing configuration, we conducted manual grid search and automated hyperparameter tuning using Keras Tuner. These methods explored a range of learning rates, neuron counts, L2 regularization strengths, and batch sizes. Early stopping was used to prevent overfitting, and binary cross-entropy loss guided optimization with the Adam optimizer. The best configuration achieved an F1-score of 0.92 which meant that it did not outperform any of the previous models (Figure 19). It may have been that a neural network was simply not needed for this task that could be done quite well by simpler models. 
+
+Note: Our neural network was not included in the final ```make run``` due to its poor performance. As per instructions, we only kept the best models in the final run. If you would like to review our code and hyperparameter tuning, please refer to ```neural_network_hyp_tuning.ipynb```.
 
 ![Figure 17](Final_Report_Screenshots/Final_NeuralNetwork_LossGraph.png) <br />
 Figure 17. Visualization of Neural Network Loss During Training and Validation
