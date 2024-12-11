@@ -4,6 +4,6 @@ install:
 
 .PHONY: data
 data:
-	python3 data_processing.py
+	venv/bin/python3 data_processing.py
 run:
-	python3 main.py
+	venv/bin/python3 main.py
