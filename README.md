@@ -21,29 +21,29 @@ Proteins are essential for the fulfillment of critical processes throughout the 
 Abnormal gene expression is often a sign of cancer and has been used in personalized medicine to identify targets for precision treatments. The data used to detect abnormal gene expression comes from RNA sequencing (RNA-seq), which measures the frequency of gene expression in cells. RNA-seq provides information about which genes are being expressed and at what levels, based on the presence of RNA. The actual values in RNA-seq data represent counts of RNA fragments that have been mapped (or connected) to specific genes, reflecting how actively a gene is being expressed in a given sample.
 
 ## Goals
-The main goal was to successfully predict cancer based on the RNA expression levels and identify a few genes of interest. 
+The main goals were to successfully predict cancer based on the RNA expression levels and identify a few genes of interest. 
 
 The project -
 
 * Built predictive models to classify samples as cancerous or non-cancerous based on RNA expression levels.
-* Identified key genes with significant impact on predicting cancerous or healthy samples.
+* Identified key genes with a significant impact on predicting cancerous or healthy samples.
 
 ## Data Collection
 Our selected dataset, sourced from the Gene Expression Omnibus (GEO) and hosted on Kaggle, contains RNA sequencing data from Tumor-Educated Platelets (TEPs). TEPs are known to reflect tumor presence in the body, as their RNA profiles change in response to signals released by tumors into the bloodstream. Leveraging TEPs for cancer diagnostics and treatment is an emerging area of research, making this dataset highly relevant for modeling applications.
 
-The dataset comprises 283 blood platelet samples, including 55 from healthy individuals, representing the cancer types of non-small cell lung, colorectal, pancreatic, and breast cancer, along with glioblastoma and hepatobiliary carcinomas. Each sample provides expression levels for 57,736 genes. Additionally, the dataset includes intron-spanning data, which offers insights into how tumors may influence RNA splicing—the process of removing non-coding regions from RNA.
+The dataset is comprised of 283 blood platelet samples, including 55 from healthy individuals, representing the cancer types of non-small cell lung, colorectal, pancreatic, and breast cancer, along with glioblastoma and hepatobiliary carcinomas. Each sample provides expression levels for 57,736 genes. Additionally, the dataset includes intron-spanning data, which offers insights into how tumors may influence RNA splicing—the process of removing non-coding regions from RNA.
 
 ## Data Processing 
 The initial step in data cleaning was to remove redundant information that would not contribute to predicting cancer through modeling. For example, a column identifying the species from which the sample originated was dropped, as all samples were from humans.
 
 After the midterm checkpoint, our team revisited the data to address the poor performance of the models we had trained. We hypothesized that the issue might stem from data processing steps and also decided to simplify the problem statement to focus solely on predicting the presence or absence of cancer, streamlining our work into a binary classification task.
 
-To accommodate this change in scope, we reformatted our RNA expression data into a long format, where each sample had its own set of gene expression values represented by Sample, gene_ID, and gene expression level (FPKM) columns. We normalized the FPKMs using the formula $\frac{\text{FPKM} - \text{mean}}{\sqrt{\text{variance} + 1e^{-10}}}$​, ensuring avoidance of division by zero or negative variance.
+To accommodate this change in scope, we reformatted our RNA expression data into a long format, where each sample had its own set of gene expression values represented by Sample, gene_ID, and gene expression level (FPKM) columns. We normalized the FPKMs using the formula $\frac{\text{FPKM} - \text{mean}}{\sqrt{\text{variance} + 1e^{-10}}}$​, making sure to avoid dividing by zero or negative variance.
 
 The original dataset we used before the midterm report was in a wide format, where samples were represented as columns, rows corresponded to gene expression levels for specific genes, and cancer type labels were one-hot encoded. While this wide format proved less suitable for modeling, we retained it for better data visualization. Overall, for modeling, we converted the data to long format, allowing for seamless integration of patient information, normalized gene expression values, and binary cancer labels.
 
 ## Data Visualization
-To better understand the dataset, a series of visualizations were created to highlight gene expression patterns and their potential implications for cancer diagnostics. Note: If you would like to review our code for data visualization, please refer to ```data_processing.ipynb```
+To better understand the dataset, a series of visualizations were created to highlight gene expression patterns and their potential implications for cancer diagnostics. Note: If you would like to review our full code for data visualization, please refer to ```data_processing.ipynb```
 
 In Figure 3, we observe that the differential expression of genes between breast cancer and normal samples varies significantly. Some genes, such as 166170, show substantial expression differences, suggesting their potential as strong predictors. This gene also appears to be differentially expressed across all cancer samples (Figure 4), indicating its association with cancer in general. According to The Human Protein Atlas, 166170 has low cancer specificity, making it useful for distinguishing between cancerous and non-cancerous samples, though less effective for identifying specific cancer types (_B2M_).
 
@@ -75,13 +75,13 @@ Figure 8. Facet Grid of FPKM Distribution of Top 20 Differentially Expressed Gen
 ## Modeling Approach
 To model the data, we explored several machine learning methods -
 
-* Linear and Logistic Regression - We built two simple models as a baseline to assess how well gene expression levels can predict cancer. We noted that these might be particularly valuable because of their interpretability, something required by medical professionals and biologists. 
+* Linear and Logistic Regression - We built two simple models as a baseline to assess how well gene expression levels can predict cancer. We noted that these might be particularly valuable because of their interpretability, something required by medical professionals and biologists. Full Code: ```Linear_and_Logistic_Regression.ipynb```
 
-* Random Forest - To capture more complex interactions between gene expression levels and cancer classification, we implemented a nonlinear Random Forest model. This approach allowed us to explore patterns that might not be captured by simpler linear models.
+* Random Forest - To capture more complex interactions between gene expression levels and cancer classification, we implemented a nonlinear Random Forest model. This approach allowed us to explore patterns that might not be captured by simpler linear models. Full Code: ```randomForest_afterMidtermProgress.ipynb```
 
-* XGBoost - We applied XGBoost, a tree-based ensemble method, to determine whether it could outperform the simpler models by leveraging its ability to model intricate relationships and handle large feature spaces efficiently. 
+* XGBoost - We applied XGBoost, a tree-based ensemble method, to determine whether it could outperform the simpler models by leveraging its ability to model intricate relationships and handle large feature spaces efficiently. Full Code: ```xgboost_afterMidtermProgress.ipynb```
 
-* Neural Network - Finally we trained a neural network, wondering if there were even more complex patterns in the gene expression data that could be elucidated. In contrast to the simpler models, we were very aware that neural networks are very difficult to explain which may make them less useful for precision medicine. 
+* Neural Network - Finally we trained a neural network, wondering if there were even more complex patterns in the gene expression data that could be elucidated. In contrast to the simpler models, we were very aware that neural networks are difficult to explain which may make them less useful for precision medicine. Full Code: ```neural_network_hyp_tuning.ipynb```
 
 ## Testing and Performance Metrics 
 Testing involved splitting the data into training and testing sets -
@@ -107,7 +107,9 @@ Figure 9. Linear Regression Confusion Matrix
 ![Figure 10](Final_Report_Screenshots/Final_LinearRegression_Report.png) <br />
 Figure 10. Linear Regression Performance Metrics 
 
-Since the results from the linear regression suggested a weak relationship, particularly with the low FPKM coefficient, we then built a logistic regression model. Logistic regression is specifically designed for binary classification tasks and is better suited for capturing stronger associations, as it models the probability of the positive class directly. Unlike linear regression, which outputs continuous values and requires a threshold for classification, logistic regression directly models the probability of the positive class using a sigmoid function. This makes it more robust for classification, as it ensures predictions are bounded between 0 and 1, naturally aligning with probabilistic interpretations. The logistic regression model also had a very good F1 score of 0.979 and accuracy of 0.964 (Figure 12). The FPKM coefficient for the logistic regression model was 0.001, representing an almost 15x larger effect compared to the linear regression model (Figure 12). This suggests that FPKM values have a much stronger association with the likelihood of the positive class in the logistic regression model, highlighting its ability to capture more pronounced relationships between gene expression and classification outcomes. The confusion matrix for the logistic model was very similar to the linear model and reflected a good distribution of predictions, which is consistent with the high accuracy. Overall, the logistic regression model appears to be doing a good job of classifying cancer samples, achieving high accuracy and F1 scores. Furthermore, its reliance on interpretable coefficients, such as the FPKM coefficient, provides valuable insights into how features contribute to the likelihood of cancer classification, which we will discuss later.
+Since the results from the linear regression suggested a weak relationship, particularly with the low FPKM coefficient, we then built a logistic regression model. Logistic regression is specifically designed for binary classification tasks and is better suited for capturing stronger associations, as it models the probability of the positive class directly. Unlike linear regression, which outputs continuous values and requires a threshold for classification, logistic regression directly models the probability of the positive class using a sigmoid function. This makes it more robust for classification, as it ensures predictions are bounded between 0 and 1, naturally aligning with probabilistic interpretations. 
+
+The logistic regression model also had a very good F1 score of 0.979 and accuracy of 0.964 (Figure 12). The FPKM coefficient for the logistic regression model was 0.001, representing an almost 15x larger effect compared to the linear regression model (Figure 12). This suggests that FPKM values have a much stronger association with the likelihood of the positive class in the logistic regression model, highlighting its ability to capture more pronounced relationships between gene expression and classification outcomes. The confusion matrix for the logistic model was very similar to the linear model and reflected a good distribution of predictions, which is consistent with the high F1-score. Overall, the logistic regression model appears to be doing a good job of classifying cancer samples, achieving high accuracy and F1 scores. Furthermore, its reliance on interpretable coefficients, such as the FPKM coefficient which showed a much stronger relationship compared to the linear model, provides valuable insights into how features contribute to the likelihood of cancer classification, which we will discuss later.
 
 ![Figure 11](Final_Report_Screenshots/Final_LogisticRegression_CF.png) <br />
 Figure 11. Logistic Regression Confusion Matrix
@@ -115,7 +117,7 @@ Figure 11. Logistic Regression Confusion Matrix
 ![Figure 12](Final_Report_Screenshots/Final_LogisticRegression_Report.png) <br />
 Figure 12. Logistic Regression Performance Metrics
 
-Next, to see if we could find more complex interactions between gene expression levels and cancer classification, we fit a Random Forest model. Random Forest has a number of benefits, including its ability to capture nonlinear interactions between features, handle feature importance ranking, and its ability to resist overfitting by aggregating predictions from multiple decision trees. In our Random Forest model, we achieved an F1-score of 0.97, which is slightly better than the logistic regression model (Figure 14). 
+Next, to see if we could find more complex interactions between gene expression levels and cancer classification, we fit a Random Forest model. Random Forest has a number of benefits, including its ability to capture nonlinear interactions between features, handle feature importance ranking, and its ability to resist overfitting by aggregating predictions from multiple decision trees. In our Random Forest model, we achieved an F1-score of 0.97 (Figure 14). 
 
 One thing we noticed was that the model performed better in predicting the positive class (precision: 0.96, recall: 0.98) compared to the negative class (precision: 0.83, recall: 0.71) (Figure 14). This disparity is likely due to the imbalance between positive and negative classes in the training set, where there are far fewer negative samples than positive. However, the false positive rate was not too high, and in many cases, favoring false positives over false negatives is acceptable because the ramifications of missing a cancer diagnosis could be much greater than misdiagnosing cancer. If this model were to be implemented, it would be critical to consult stakeholders to determine which performance metric—precision, recall, or another—should be prioritized based on the clinical context.
 
