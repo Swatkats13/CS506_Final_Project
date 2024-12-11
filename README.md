@@ -1,6 +1,8 @@
 # CS506_Final_Project
 ## Run the code
-Download the raw dataset from Kaggle, then unzip, and add contents of unzipped file to ```data``` folder<br>
+1. Download the raw dataset from Kaggle
+2. Unzip
+3. Add contents of unzipped folder to ```data``` folder<br>
 [Gene Expression Omnibus (GEO) Dataset: GSE68086](https://www.kaggle.com/datasets/samiraalipour/gene-expression-omnibus-geo-dataset-gse68086)<br>
 \* Done this way because file too large to commit to git <br><br>
 
