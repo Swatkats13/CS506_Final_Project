@@ -147,7 +147,24 @@ def main():
     # Classification Report
     print("\nClassification Report:")
     print(classification_report(y_test, y_pred_rf))
+
+    # Logistic Regression which genes positively and negatively affect the probability of cancer
+    genes = X_train.columns
+    gene_weights = logistic_model.coef_[0]
+    gene_weights = pd.Series(gene_weights, index=genes)
+    gene_weights = gene_weights.sort_values(ascending=False)
+
+    print("\nGenes that positively affect the probability of cancer:")
+    print(gene_weights.head(20))
+
+    # XGBoost Feature Importance
+    feature_importances = xgb_model.feature_importances_
+    feature_importances = pd.Series(feature_importances, index=X_train.columns).sort_values(ascending=False)
     
+    # Top 20 most important features
+    print("\nTop 20 Features by Importance:")
+    print(feature_importances.head(20))
+
     # Save the confusion matrix plot for Random Forest
     cm = confusion_matrix(y_test, y_pred_rf)
     disp = ConfusionMatrixDisplay(confusion_matrix=cm, display_labels=[False, True])
