@@ -151,7 +151,7 @@ Figure 19. Neural Network Performance Metric
 ## Findings
 From our model-building efforts, we identified logistic regression and XGBoost as the best-performing models for our analysis. XGBoost stood out for its highest F1-score, while logistic regression was chosen for its interpretability. Since a key goal of this project was to identify genes that could be valuable in diagnosing cancer or serving as targets for precision medicine, we explored the genes most heavily contributing to the performance of these models. Interestingly, the two models identified different relevant genes, underscoring the value of using multiple modeling approaches.
 
-In the logistic regression model, three genes—ENSG00000229056, ENSG00000204397, and ENSG00000185222—were most strongly associated with an increased likelihood of cancer when highly expressed (Figure 20).
+In the logistic regression model, three of the top five genes most strongly associated with an increased likelihood of cancer when highly expressed were: ENSG00000229056, ENSG00000204397, and ENSG00000185222 (Figure 20).
 
 1. ENSG00000229056: This gene encodes a long non-coding RNA (lncRNA), a class of genes crucial for regulating gene expression and potentially impacting protein degradation (Gene: HECW2-AS1; Mattick et al.). Notably, there is little evidence linking this gene to cancer in previous studies - especially in comparison to the other genes seen in the top 20 (aTomic Lab). This highlights the potential novelty of our model’s findings and suggests it may have identified a new target for precision medicine.
 
