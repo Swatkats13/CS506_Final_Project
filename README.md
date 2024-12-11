@@ -1,7 +1,8 @@
 # CS506_Final_Project
 ## Run the code
 Download the raw dataset from Kaggle, then unzip, and add contents of unzipped file to ```data``` folder<br>
-[Gene Expression Omnibus (GEO) Dataset: GSE68086](https://www.kaggle.com/datasets/samiraalipour/gene-expression-omnibus-geo-dataset-gse68086)<br><br>
+[Gene Expression Omnibus (GEO) Dataset: GSE68086](https://www.kaggle.com/datasets/samiraalipour/gene-expression-omnibus-geo-dataset-gse68086)<br>
+* Done this way because file too large to commit to git <br> <br>
 Pre-processed dataset is also available from our Google Drive, you can skip the data processing if you download the clean data [https://drive.google.com/drive/folders/1azEtUWEL36PpT4c7fenRnjUFl9yMfc7q?usp=sharing](https://drive.google.com/drive/folders/1azEtUWEL36PpT4c7fenRnjUFl9yMfc7q?usp=sharing)<br>
 ```merged_data.csv``` is for visualization in ```data_processing.ipynb```, ```cleaned_data_train.csv``` and ```cleaned_data_test.csv``` are for the actual model<br><br><br>
 ```make install``` to install all dependencies<br>
