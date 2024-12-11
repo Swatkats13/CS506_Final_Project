@@ -43,7 +43,7 @@ To accommodate this change in scope, we reformatted our RNA expression data into
 The original dataset we used before the midterm report was in a wide format, where samples were represented as columns, rows corresponded to gene expression levels for specific genes, and cancer type labels were one-hot encoded. While this wide format proved less suitable for modeling, we retained it for better data visualization. Overall, for modeling, we converted the data to long format, allowing for seamless integration of patient information, normalized gene expression values, and binary cancer labels.
 
 ## Data Visualization
-To better understand the dataset, a series of visualizations were created to highlight gene expression patterns and their potential implications for cancer diagnostics. 
+To better understand the dataset, a series of visualizations were created to highlight gene expression patterns and their potential implications for cancer diagnostics. Note: If you would like to review our code for data visualization, please refer to ```data_processing.ipynb```
 
 In Figure 3, we observe that the differential expression of genes between breast cancer and normal samples varies significantly. Some genes, such as 166170, show substantial expression differences, suggesting their potential as strong predictors. This gene also appears to be differentially expressed across all cancer samples (Figure 4), indicating its association with cancer in general. According to The Human Protein Atlas, 166170 has low cancer specificity, making it useful for distinguishing between cancerous and non-cancerous samples, though less effective for identifying specific cancer types (_B2M_).
 
@@ -71,7 +71,6 @@ Following this, Figure 8 provides insight into how FPKM values vary within each 
 ![Figure 8](Screenshots/Figure_8.png) <br />
 Figure 8. Facet Grid of FPKM Distribution of Top 20 Differentially Expressed Genes
 
-Note: If you would like to review our code for data visualization, please refer to ```data_processing.ipynb```
 
 ## Modeling Approach
 To model the data, we explored several machine learning methods -
