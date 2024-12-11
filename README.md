@@ -4,13 +4,12 @@
 2. Unzip downloaded folder
 3. Add contents of unzipped folder to ```data``` folder<br>
 
-\* Done this way because file too large to commit to git <br><br>
+>Pre-processed dataset is also available from our Google Drive, you can skip the data processing if you download the clean data [https://drive.google.com/drive/folders/1azEtUWEL36PpT4c7fenRnjUFl9yMfc7q?usp=sharing](https://drive.google.com/drive/folders/1azEtUWEL36PpT4c7fenRnjUFl9yMfc7q?usp=sharing)<br>
+```merged_data.csv``` is for visualization in ```data_processing.ipynb```, ```cleaned_data_train.csv``` and ```cleaned_data_test.csv``` are for the actual model<br><br>
 
-Pre-processed dataset is also available from our Google Drive, you can skip the data processing if you download the clean data [https://drive.google.com/drive/folders/1azEtUWEL36PpT4c7fenRnjUFl9yMfc7q?usp=sharing](https://drive.google.com/drive/folders/1azEtUWEL36PpT4c7fenRnjUFl9yMfc7q?usp=sharing)<br>
-```merged_data.csv``` is for visualization in ```data_processing.ipynb```, ```cleaned_data_train.csv``` and ```cleaned_data_test.csv``` are for the actual model<br><br><br>
-```make install``` to install all dependencies<br>
-```make data``` to process data<br>
-```make run``` to go through model-building steps and make the prediction<br>
+5. ```make install``` to install all dependencies<br>
+6. ```make data``` to process data<br>
+7. ```make run``` to go through model-building steps and make the prediction<br>
 
 ## Description
 
