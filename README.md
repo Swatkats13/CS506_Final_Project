@@ -163,10 +163,11 @@ In the logistic regression model, three of the top five genes most strongly asso
 
 3. ENSG00000185222: Similarly, this gene, previously identified as a cancer marker, further validates our model’s performance in pinpointing genes with potential for therapeutic exploration (TCEAL9 Protein Expression).
 
-The top three genes identified as the most important by the XGBoost model were ENSG00000155657, ENSG00000168172, and ENSG00000101132 (Figure 21). XGBoost’s concept of feature importance is unique, as it evaluates how much each gene contributes to reducing prediction errors during model training, offering insights into their role in cancer classification.
 
 ![Figure 20](Final_Report_Screenshots/LogisticRegression_GenesIncrease.png) <br />
 Figure 20. Logistic Regression Genes Increasing Probability of Cancer
+
+The top three genes identified as the most important by the XGBoost model were ENSG00000155657, ENSG00000168172, and ENSG00000101132 (Figure 21). XGBoost’s concept of feature importance is unique, as it evaluates how much each gene contributes to reducing prediction errors during model training, offering insights into their role in cancer classification.
 
 1. ENSG00000155657: This gene plays a critical role in assembling and maintaining striated muscles (TTN Protein Expression). Its enhanced expression in sarcoma cancers aligns with established biological knowledge, providing strong validation of the XGBoost model’s ability to identify biologically meaningful relationships. The identification of such known associations strengthens confidence in the model’s potential to uncover novel gene associations for further exploration.
 
